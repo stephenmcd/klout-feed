@@ -1,2 +1,2 @@
-require "klout-feed"
+require "feed"
 run Sinatra::Application
