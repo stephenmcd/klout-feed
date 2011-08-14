@@ -1,2 +1,2 @@
-require "feed"
+require "./feed"
 run Sinatra::Application
