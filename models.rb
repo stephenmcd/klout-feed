@@ -15,7 +15,7 @@ class User
   has n, :scores
 
   def load_scores(key)
-    if scores.length == 0 or scores[0].created_at < (DateTime.now - 1)
+    if scores.length == 0 or scores[0].created_at < DateTime.now - 4 / 24.0
       params = {:users => name, :key => key}
       response = JSON.parse(RestClient.get KLOUT_URL, {:params => params})
       scores << Score.create(:value => response["users"][0]["kscore"])
