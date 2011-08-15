@@ -37,6 +37,10 @@ class Score
   property :value, Float
   property :created_at, DateTime
 
+  def self.latest
+    all(:order => [:id.desc], :limit => 20)
+  end
+
   def to_s
     date = created_at.strftime "%b %e"
     "#{user.name}'s Klout Score for #{date} is: #{value}"

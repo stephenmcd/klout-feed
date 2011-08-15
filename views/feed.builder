@@ -5,7 +5,7 @@ builder do |xml|
       xml.title "Klout Scores for #{@user}"
       xml.description "Klout Scores for #{@user}"
       xml.link request.url
-      @user.scores.each do |score|
+      @user.scores.latest.each do |score|
         xml.item do
           xml.title score
           xml.link "http://klout.com/##{@user}"
@@ -17,4 +17,3 @@ builder do |xml|
     end
   end
 end
-
