@@ -1,3 +1,2 @@
-$LOAD_PATH.unshift(Dir.getwd)
-require "feed"
+require "./app"
 run Sinatra::Application

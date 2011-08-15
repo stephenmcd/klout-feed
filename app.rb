@@ -2,11 +2,16 @@
 require "rubygems"
 require "sinatra"
 require "builder"
-require "models"
+require "sass"
+require "./models"
 #require "ruby-debug/debugger"
 
 get "/" do
   erb :index
+end
+
+get "/stylesheet.css" do
+    scss :stylesheet, :style => :compact
 end
 
 get "/feed/:key/:name.xml" do
