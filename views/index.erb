@@ -1,15 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>klout-feed</title>
-    <link href="/stylesheet.css" rel="stylesheet">
+
+<meta charset="utf-8">
+<title>Klout Feed</title>
+<link href="/normalize.css" rel="stylesheet">
+<link href="/stylesheet.css" rel="stylesheet">
+<script src="/modernizr.js"></script>
 </head>
 <body>
-
 <div id="main">
-<h1>Klout Feed</h1>
-</div>
 
+<h1><a href="/">Klout Feed</a></h1>
+<div class="panel">
+    <p>
+        Enter your <a href="http://klout.com">Klout</a> username and
+        API key to get an RSS feed for your daily Klout Score.
+    </p>
+    <form method="post">
+        <label for="username">Username:</label>
+        <label for="key">API Key:</label>
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="text" name="key" id="key" placeholder="API Key">
+        <input type="submit" value="Get Feed">
+        <br clear="both">
+    </form>
+</div>
+<footer>
+    <span>Created by <a href="http://steve.jupo.org">Stephen McDonald</a>.</span>
+    <span><a href="https://github.com/stephenmcd/klout-feed">Open source</a>.</span>
+    <span>Klout Feed is not affiliated with <a href="http://klout.com">Klout</a>.</span>
+</footer>
+</div>
 </body>
 </html>
