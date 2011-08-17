@@ -16,6 +16,6 @@ end
 
 get "/feed/:key/:name.xml" do
   @user = User.first_or_create(:name => params[:name])
-  @user.load_scores params[:key]
+  puts @user.load_scores params[:key]
   builder :feed
 end
