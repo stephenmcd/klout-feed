@@ -7,6 +7,13 @@
 <link href="/normalize.css" rel="stylesheet">
 <link href="/stylesheet.css" rel="stylesheet">
 <script src="/modernizr.js"></script>
+<script>
+window.onload = function() {
+    if (!Modernizr.input.placeholder) {
+        document.documentElement.className += ' no-placeholder';
+    }
+};
+</script>
 </head>
 <body>
 <div id="main">

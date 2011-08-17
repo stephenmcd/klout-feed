@@ -44,7 +44,8 @@ h1 {
     p {margin:0 0 20px 0;}
 };
 
-label {width:200px; text-indent:5px; display:none;}
+label {width:200px; text-indent:5px; margin-bottom:3px; display:none;}
+.no-placeholder label {display:block;}
 label, input[type="text"] {float:left;}
 
 input {@include border-radius(5px); padding: 5px 10px;}
