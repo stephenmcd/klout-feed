@@ -12,11 +12,14 @@ class User
 
   property :id, Serial
   property :name, String
+  has n, :api_keys, :through => Resource
   has n, :scores
 
-  def load_scores(key)
+  def load_scores(api_key_value)
+    api_key = ApiKey.first_or_create(:value => api_key_value)
+    api_keys << api_key unless api_keys.include? api_key
     if scores.length == 0 or scores[0].created_at < DateTime.now - 4 / 24.0
-      params = {:users => name, :key => key}
+      params = {:users => api_keys.users.all.join(","), :key => api_key_value}
       response = JSON.parse(RestClient.get KLOUT_URL, {:params => params})
       scores << Score.create(:value => response["users"][0]["kscore"])
       save
@@ -26,7 +29,18 @@ class User
   def to_s
     name
   end
+end
 
+class ApiKey
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :value, String
+  has n, :users, :through => Resource
+
+  def to_s
+    value
+  end
 end
 
 class Score
@@ -45,8 +59,7 @@ class Score
     date = created_at.strftime "%b %e"
     "#{user.name}'s Klout Score for #{date} is: #{value}"
   end
-
 end
 
-User.auto_upgrade!
-Score.auto_upgrade!
+DataMapper.finalize
+DataMapper.auto_upgrade!
