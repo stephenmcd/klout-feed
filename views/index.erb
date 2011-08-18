@@ -6,19 +6,13 @@
 <title>Klout Feed</title>
 <link href="/normalize.css" rel="stylesheet">
 <link href="/stylesheet.css" rel="stylesheet">
-<script src="/modernizr.js"></script>
-<script>
-window.onload = function() {
-    if (!Modernizr.input.placeholder) {
-        document.documentElement.className += ' no-placeholder';
-    }
-};
-</script>
+
 </head>
 <body>
 <div id="main">
 
 <h1><a href="/">Klout Feed</a></h1>
+
 <div class="panel">
     <p>
         Enter your <a href="http://klout.com">Klout</a> username and
@@ -27,17 +21,31 @@ window.onload = function() {
     <form method="post">
         <label for="username">Username:</label>
         <label for="key">API Key:</label>
-        <input type="text" name="username" id="username" placeholder="Username">
-        <input type="text" name="key" id="key" placeholder="API Key">
+        <input type="text" name="username" id="username" value="<%= params[:username] %>">
+        <input type="text" name="api_key" id="api_key" value="<%= params[:api_key] %>">
         <input type="submit" value="Get Feed">
         <br clear="both">
     </form>
+    <% if request.post? %>
+    <p class="message<% if !@success %> error<% end %>">
+        <%
+        if @success
+            feed_url = "#{request.url}feed/#{params[:api_key]}/#{params[:username]}.xml"
+        %>
+        Your Klout RSS feed URL: <a href="<%= feed_url %>"><%= feed_url %></a>
+        <% else  %>
+        Error: <%= @error %>
+        <% end %>
+    </p>
+    <% end %>
 </div>
+
 <footer>
     <span>Created by <a href="http://steve.jupo.org">Stephen McDonald</a>.</span>
     <span><a href="https://github.com/stephenmcd/klout-feed">Open source</a>.</span>
     <span>Klout Feed is not affiliated with <a href="http://klout.com">Klout</a>.</span>
 </footer>
+
 </div>
 </body>
 </html>

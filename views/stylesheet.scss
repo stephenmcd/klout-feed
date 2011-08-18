@@ -44,8 +44,7 @@ h1 {
     p {margin:0 0 20px 0;}
 };
 
-label {width:200px; text-indent:5px; margin-bottom:3px; display:none;}
-.no-placeholder label {display:block;}
+label {width:200px; text-indent:7px; margin-bottom:3px;}
 label, input[type="text"] {float:left;}
 
 input {@include border-radius(5px); padding: 5px 10px;}
@@ -64,6 +63,12 @@ input[type="submit"] {
     box-shadow: inset 1px 0px 1px rgba(255, 255, 255, 0.4);
     -webkit-box-shadow: inset 1px 0px 1px rgba(255, 255, 255, 0.4);
     -moz-box-shadow: inset 1px 0px 1px rgba(255, 255, 255, 0.4);
+}
+
+.message {
+    margin:30px 0 0 0 !important; text-align:center;
+    a {margin-left:5px;}
+    &.error {color:#f00;}
 }
 
 footer {
