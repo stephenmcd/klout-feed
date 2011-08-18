@@ -6,7 +6,16 @@
 <title>Klout Feed</title>
 <link href="/normalize.css" rel="stylesheet">
 <link href="/stylesheet.css" rel="stylesheet">
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+$(function() {
+    $('form').submit(function() {
+        var data = {username: this.username.value, api_key: this.api_key.value};
+        $('#message').html('<img src="loading-small.gif">').load('/ #message', data);
+        return false;
+    });
+});
+</script>
 </head>
 <body>
 <div id="main">
@@ -26,18 +35,20 @@
         <input type="submit" value="Get Feed">
         <br clear="both">
     </form>
-    <% if request.post? %>
-    <p class="message<% if !@success %> error<% end %>">
-        <%
-        if @success
-            feed_url = "#{request.url}feed/#{params[:api_key]}/#{params[:username]}.xml"
-        %>
-        Your Klout RSS feed URL: <a href="<%= feed_url %>"><%= feed_url %></a>
-        <% else  %>
-        Error: <%= @error %>
+    <div id="message">
+        <% if request.post? %>
+        <p class="message<% if !@success %> error<% end %>">
+            <%
+            if @success
+                feed_url = "#{request.url}feed/#{params[:api_key]}/#{params[:username]}.xml"
+            %>
+            Your Klout RSS feed URL: <a href="<%= feed_url %>"><%= feed_url %></a>
+            <% else  %>
+            Error: <%= @error %>
+            <% end %>
+        </p>
         <% end %>
-    </p>
-    <% end %>
+    </div>
 </div>
 
 <footer>
