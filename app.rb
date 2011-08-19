@@ -30,7 +30,7 @@ end
 # RSS feed for the given API Key and username.
 get "/feed/:api_key/:username.xml" do
   @user = User.first_or_create(:name => params[:username])
-  @user.load_scores params[:key]
+  @user.load_scores params[:api_key]
   #builder :feed
   builder do |xml|
     xml.instruct! :xml, :version => '1.0'

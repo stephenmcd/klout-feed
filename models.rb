@@ -40,7 +40,7 @@ class User
       # so we can easily get a user's score as we iterate through the users.
       users = Hash[response["users"].map {|u| [u["twitter_screen_name"], u["kscore"]]}]
       return "Invalid username" unless users.has_key? name
-      api_keys.users.each do |u|
+      api_key.users.each do |u|
         if u.set_new?
             u.scores << Score.create(:value => users[u.name])
             u.save
@@ -55,13 +55,15 @@ class User
   # lower than a day since we don't know when the actual feed gets
   # requested or when the score actually ticks over for the day.
   def load_new?
-    scores.length == 0 or scores[0].created_at < DateTime.now - 4 / 24.0
+    last = scores.latest.first
+    last.nil? or last.created_at < DateTime.now - 4 / 24.0
   end
 
   # Used to determine whether a new score should be set. Don't set a
   # new score if the previous score falls on the same day.
   def set_new?
-    scores.length == 0 or scores[0].created_at.day != DateTime.now.day
+    last = scores.latest.first
+    last.nil? or last.created_at.day != DateTime.now.day
   end
 
   def to_s
@@ -94,8 +96,11 @@ class Score
   end
 
   def to_s
+    last = user.scores.all(:id.lt => id).latest.first
+    delta = last.nil? ? 0 : value - last.value
+    updown = delta < 0 ? "down" : "up"
     date = created_at.strftime "%b %e"
-    "#{user.name}'s Klout Score for #{date} is: #{value}"
+    "#{user.name}'s Klout Score for #{date} is: #{value}, #{updown} by #{delta}"
   end
 end
 
