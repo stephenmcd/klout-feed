@@ -97,7 +97,7 @@ class Score
 
   def to_s
     last = user.scores.all(:id.lt => id).latest.first
-    delta = last.nil? ? 0 : value - last.value
+    delta = last.nil? ? 0 : ((value - last.value) * 100).round / 100.0
     updown = delta < 0 ? "down" : "up"
     date = created_at.strftime "%b %e"
     "#{user.name}'s Klout Score for #{date} is: #{value}, #{updown} by #{delta}"
