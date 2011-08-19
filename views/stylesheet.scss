@@ -7,6 +7,17 @@ $orange: #e44600;
     box-shadow:           $x $y $px $colour;
 }
 
+@mixin background-gradient($start, $end) {
+    background: $end;
+    background: -moz-linear-gradient(top, $start 0%, $end 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$end));
+    background: -webkit-linear-gradient(top, $start 0%,$end 100%);
+    background: -o-linear-gradient(top, $start 0%,$end 100%);
+    background: -ms-linear-gradient(top, $start 0%,$end 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start}', endColorstr='#{$end}',GradientType=0 );
+    background: linear-gradient(top, $start 0%,$end 100%);
+}
+
 @mixin box-shadow-inset($x, $y, $px, $colour) {
     -moz-box-shadow:      $x $y $px $colour;
     -webkit-box-shadow:   $x $y $px $colour;
@@ -44,15 +55,16 @@ h1 {
     p {margin:0 0 40px 0;}
 };
 
-label {width:200px; text-indent:7px; margin-bottom:3px;}
+label {width:200px; text-indent:4px; margin-bottom:3px;}
 label, input[type="text"] {float:left;}
 
 input {@include border-radius(5px); padding: 5px 10px;}
 
 input[type="text"] {
     width:170px; margin-right:10px;
-    font-family:sans-serif; border: 1px solid #e9e9e9;
-    &:focus {border-color: $orange;}
+    font-family:sans-serif; border: 1px solid #e3e3e3;
+    &:focus {border-color: $orange; @include background-gradient(#ffffff, #ffffff);}
+    @include background-gradient(#f9f9f9, #ffffff);
 }
 
 input[type="submit"] {
