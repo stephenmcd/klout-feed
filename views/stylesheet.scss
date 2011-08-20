@@ -1,33 +1,11 @@
 
 @font-face {
-    font-family: 'DINBold';
-    src: url('/fonts/din-bold-webfont.eot');
-    src: url('/fonts/din-bold-webfont.eot?iefix') format('eot'),
-         url('/fonts/din-bold-webfont.woff') format('woff'),
-         url('/fonts/din-bold-webfont.ttf') format('truetype'),
-         url('/fonts/din-bold-webfont.svg#webfontP8nfTlwg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'DINMedium';
     src: url('/fonts/din-medium-webfont.eot');
     src: url('/fonts/din-medium-webfont.eot?iefix') format('eot'),
          url('/fonts/din-medium-webfont.woff') format('woff'),
          url('/fonts/din-medium-webfont.ttf') format('truetype'),
          url('/fonts/din-medium-webfont.svg#webfonteq6wpgx5') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DINLight';
-    src: url('/fonts/din-light-webfont.eot');
-    src: url('/fonts/din-light-webfont.eot?#iefix') format('eot'),
-         url('/fonts/din-light-webfont.woff') format('woff'),
-         url('/fonts/din-light-webfont.ttf') format('truetype'),
-         url('/fonts/din-light-webfont.svg#webfontf23i6Xb7') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -82,33 +60,33 @@ body {
 
 * {font-family:'DINRegular', Arial, sans-serif; color: #5B5B5B;}
 a, a:visited {color:$orange;}
-#main {width:600px; margin:5% auto; text-align:left;}
+#main {width:620px; margin:5% auto; text-align:left;}
 h1 {
-    margin:0; font-size:30px;
+    margin:0 0 0 20px;
     a, a:visited {
         font-family:'DINRegular', Arial, sans-serif; text-decoration:none;
         color: #999; text-transform:uppercase;
-        img {width:150px; margin:0 3px -9px 20px;}
+        img {width:228px; height:33px;}
     }
 }
 
 .panel {
     @include box-shadow(3px, 3px, 4px, #c4c3c3); @include border-radius(10px);
     background:#fff; border:1px solid #cbcbcb; padding:50px; font-size:14px;
-    margin:10px 0 30px 0;
+    margin:0 0 30px 0;
     p {margin:0 0 30px 0;}
 };
 
-label {width:200px; text-indent:4px; margin-bottom:3px;}
+label {width:210px; text-indent:4px; margin-bottom:3px;}
 label, input[type="text"] {float:left;}
 
 input {@include border-radius(5px); padding: 5px 10px;}
 
 input[type="text"] {
-    width:170px; margin-right:10px;
+    width:180px; margin-right:10px;
     font-family:sans-serif; border: 1px solid #e3e3e3;
     &:focus {border-color:$orange; @include background-gradient(#ffffff, #ffffff);}
-    @include background-gradient(#f9f9f9, #ffffff);
+    @include background-gradient(#f5f5f5, #ffffff);
 }
 
 input[type="submit"] {
@@ -129,5 +107,8 @@ input[type="submit"] {
 
 footer {
     text-align:center; font-size:14px;
-    img {vertical-align:middle; margin:-5px 0 0 5px;}
+    img {
+        vertical-align:middle; margin:-5px 0 0 5px; width:120px; height:24px;
+        border:0;
+    }
 }
