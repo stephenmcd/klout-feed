@@ -1,5 +1,50 @@
 
-$orange: #e44600;
+@font-face {
+    font-family: 'DINBold';
+    src: url('/fonts/din-bold-webfont.eot');
+    src: url('/fonts/din-bold-webfont.eot?iefix') format('eot'),
+         url('/fonts/din-bold-webfont.woff') format('woff'),
+         url('/fonts/din-bold-webfont.ttf') format('truetype'),
+         url('/fonts/din-bold-webfont.svg#webfontP8nfTlwg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINMedium';
+    src: url('/fonts/din-medium-webfont.eot');
+    src: url('/fonts/din-medium-webfont.eot?iefix') format('eot'),
+         url('/fonts/din-medium-webfont.woff') format('woff'),
+         url('/fonts/din-medium-webfont.ttf') format('truetype'),
+         url('/fonts/din-medium-webfont.svg#webfonteq6wpgx5') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINLight';
+    src: url('/fonts/din-light-webfont.eot');
+    src: url('/fonts/din-light-webfont.eot?#iefix') format('eot'),
+         url('/fonts/din-light-webfont.woff') format('woff'),
+         url('/fonts/din-light-webfont.ttf') format('truetype'),
+         url('/fonts/din-light-webfont.svg#webfontf23i6Xb7') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINRegular';
+    src: url('/fonts/din-regular-webfont.eot');
+    src: url('/fonts/din-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/din-regular-webfont.woff') format('woff'),
+         url('/fonts/din-regular-webfont.ttf') format('truetype'),
+         url('/fonts/din-regular-webfont.svg#DINRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$orange: #e44803;
+$blue:   #01b9ff;
 
 @mixin box-shadow($x, $y, $px, $colour) {
     -moz-box-shadow:      $x $y $px $colour;
@@ -30,29 +75,28 @@ $orange: #e44600;
     border-radius:         $px;
 }
 
-@font-face {
-    font-family: 'Alte DIN 1451 Gepraegt';
-    src: url('/din-1451-alt-g.woff') format('woff');
-}
-
 body {
-    border-top: 5px solid #01BAFF; margin:0;
+    border-top: 5px solid $blue; margin:0;
     background-color: #E9E9E9; text-align:center;
 }
 
-* {font-family: 'Alte DIN 1451 Gepraegt'; color: #5B5B5B;}
+* {font-family:'DINRegular', Arial, sans-serif; color: #5B5B5B;}
 a, a:visited {color:$orange;}
 #main {width:600px; margin:5% auto; text-align:left;}
 h1 {
-    text-transform:uppercase; margin:0 0 0 20px; font-size:24px;
-    a, a:visited {text-decoration:none; color: #5B5B5B;}
+    margin:0; font-size:30px;
+    a, a:visited {
+        font-family:'DINRegular', Arial, sans-serif; text-decoration:none;
+        color: #999; text-transform:uppercase;
+        img {width:150px; margin:0 3px -9px 20px;}
+    }
 }
 
 .panel {
     @include box-shadow(3px, 3px, 4px, #c4c3c3); @include border-radius(10px);
     background:#fff; border:1px solid #cbcbcb; padding:50px; font-size:14px;
-    margin:10px 0 20px 0;
-    p {margin:0 0 40px 0;}
+    margin:10px 0 30px 0;
+    p {margin:0 0 30px 0;}
 };
 
 label {width:200px; text-indent:4px; margin-bottom:3px;}
@@ -63,13 +107,13 @@ input {@include border-radius(5px); padding: 5px 10px;}
 input[type="text"] {
     width:170px; margin-right:10px;
     font-family:sans-serif; border: 1px solid #e3e3e3;
-    &:focus {border-color: $orange; @include background-gradient(#ffffff, #ffffff);}
+    &:focus {border-color:$orange; @include background-gradient(#ffffff, #ffffff);}
     @include background-gradient(#f9f9f9, #ffffff);
 }
 
 input[type="submit"] {
     color:#fff; background: $orange; float:left;
-    font-family: 'Alte DIN 1451 Gepraegt';
+    font-family: 'DINMedium', Arial, sans-serif; margin-top:-1px;
     text-transform:uppercase; text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
     border: 1px solid #AF3905;
     box-shadow: inset 1px 0px 1px rgba(255, 255, 255, 0.4);
@@ -85,5 +129,5 @@ input[type="submit"] {
 
 footer {
     text-align:center; font-size:14px;
-    span {margin:0 5px;}
+    img {vertical-align:middle; margin:-5px 0 0 5px;}
 }
