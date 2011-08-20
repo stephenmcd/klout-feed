@@ -41,7 +41,7 @@ class User
       users = Hash[response["users"].map {|u| [u["twitter_screen_name"], u["kscore"]]}]
       return "Invalid username" unless users.has_key? name
       api_key.users.each do |u|
-        if u.set_new?
+        if u.load_new?
             u.scores << Score.create(:value => users[u.name])
             u.save
         end
@@ -50,18 +50,9 @@ class User
     ""
   end
 
-  # Used to determine whether the API should be hit. Don't hit the API
-  # if a score was loaded less than 4 hours ago. This frequency is
-  # lower than a day since we don't know when the actual feed gets
-  # requested or when the score actually ticks over for the day.
-  def load_new?
-    last = scores.latest.first
-    last.nil? or last.created_at < DateTime.now - 4 / 24.0
-  end
-
   # Used to determine whether a new score should be set. Don't set a
   # new score if the previous score falls on the same day.
-  def set_new?
+  def load_new?
     last = scores.latest.first
     last.nil? or last.created_at.day != DateTime.now.day
   end
