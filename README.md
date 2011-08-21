@@ -11,12 +11,14 @@ Technology Used
 
   * [Sinatra][3]
   * [DataMapper][4]
-  * [Klout API][5]
-  * [Heroku][6]
+  * [Sass][5]
+  * [Klout API][6]
+  * [Heroku][7]
 
 [1]: http://klout-feed.jupo.org
 [2]: http://klout.com
 [3]: http://www.sinatrarb.com/
 [4]: http://datamapper.org/
-[5]: http://developer.klout.com/iodocs
-[6]: http://www.heroku.com/
+[5]: http://sass-lang.com/
+[6]: http://developer.klout.com/iodocs
+[7]: http://www.heroku.com/
