@@ -7,6 +7,7 @@ KLOUT_URL = "http://api.klout.com/1/klout.json"
 #DataMapper::Logger.new(STDOUT, :debug)
 DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/feed.db")
 
+# A Klout user that contains scores and Api Keys.
 class User
   include DataMapper::Resource
 
@@ -63,6 +64,8 @@ class User
   end
 end
 
+# A Klout API Key. Has a many to many relationship with users allowing
+# someone to create feeds for up to 5 users per API key.
 class ApiKey
   include DataMapper::Resource
 
@@ -75,6 +78,7 @@ class ApiKey
   end
 end
 
+# A score for a user. Loaded via User.load_scores.
 class Score
   include DataMapper::Resource
 
@@ -87,6 +91,8 @@ class Score
     all(:order => [:id.desc], :limit => 20)
   end
 
+  # Used for the RSS feed's title and description. Show the score's
+  # date and delta since yesterday.
   def to_s
     last = user.scores.all(:id.lt => id).latest.first
     delta = last.nil? ? 0 : ((value - last.value) * 100).round / 100.0
