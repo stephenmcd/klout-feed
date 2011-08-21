@@ -23,8 +23,8 @@ post "/" do
 end
 
 # Render Sass stylesheet.
-get "/stylesheet.css" do
-    scss :stylesheet, :style => :compact
+get "/css/stylesheet.css" do
+    scss :"../public/css/stylesheet", :style => :compact
 end
 
 # RSS feed for the given API Key and username.

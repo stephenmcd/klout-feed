@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <title>Klout Feed</title>
 <meta name="description" content="Enter your Klout username and API key to get an RSS feed for your daily Klout Score.">
-<link href="/normalize.css" rel="stylesheet">
-<link href="/stylesheet.css" rel="stylesheet">
+<link href="/css/normalize.css" rel="stylesheet">
+<link href="/css/stylesheet.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
 $(function() {
     $('form').submit(function() {
         var data = {username: this.username.value, api_key: this.api_key.value};
-        $('#message').html('<img src="loading-small.gif">').load('/ #message', data);
+        $('#message').html('<img src="img/loading-small.gif">').load('/ #message', data);
         return false;
     });
 });
@@ -21,7 +21,7 @@ $(function() {
 <body>
 <div id="main">
 
-<h1><a href="/"><img src="klout-feed-logo.png" alt="Klout Feed"></a></h1>
+<h1><a href="/"><img src="img/klout-feed-logo.png" alt="Klout Feed"></a></h1>
 
 <div class="panel">
     <p>
@@ -54,9 +54,12 @@ $(function() {
 </div>
 
 <footer>
-    Created by <a href="http://twitter.com/stephen_mcd">Stephen McDonald</a>.
-    <a href="https://github.com/stephenmcd/klout-feed">Open source</a>.
-    <a href="http://klout.com" title="Klout Powered"><img src="/klout-powered-gray.png" alt="Klout Powered" /> </a>
+<ul>
+    <li>Created by <a href="http://twitter.com/stephen_mcd">Stephen McDonald</a>.</li>
+    <li><a href="https://github.com/stephenmcd/klout-feed">Open source</a>.</li>
+    <li><a href="http://klout.com" title="Klout Powered"><img class="klout" src="/img/klout-powered-gray.png" alt="Klout Powered"></a></li>
+    <li><a href="http://heroku.com" title="Powered by Heroku"><img class="heroku" src="/img/heroku-logo.png" alt="Powered by Heroku"></a></li>
+</ul>
 </footer>
 
 </div>
