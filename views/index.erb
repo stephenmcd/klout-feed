@@ -44,7 +44,7 @@ $(function() {
             if @success
                 feed_url = "#{request.url}feed/#{params[:api_key]}/#{params[:username]}.xml"
             %>
-            Your Klout RSS feed URL: <a href="<%= feed_url %>"><%= feed_url %></a>
+            Your Klout RSS feed URL:<br><a href="<%= feed_url %>"><%= feed_url %></a>
             <% else  %>
             Error: <%= @error %>
             <% end %>
