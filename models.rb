@@ -23,6 +23,7 @@ class User
   # as fresh as possible.
   def load_scores(api_key_value)
     api_key = ApiKey.first_or_create(:value => api_key_value)
+    return "Only 5 users allowed per API key" if api_key.users.length >= 5
     if not api_keys.include? api_key
         api_keys << api_key
         save
