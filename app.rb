@@ -42,7 +42,7 @@ get "/feed/:api_key/:username.xml" do
         @user.scores.latest.each do |score|
           xml.item do
             xml.title score
-            xml.link "http://klout.com/##{@user}"
+            xml.link "http://klout.com/#/#{@user}"
             xml.description score
             xml.pubDate Time.parse(score.created_at.to_s).rfc822()
             xml.guid
